@@ -35,7 +35,12 @@ class Pengrajin extends BaseController
   
   public function index()
   {
-    return view('pengrajin/home_pengrajin');
+    $data = [
+      'data_produk' => $this->ProdukModal->countAllResults(),
+      'data_pesanan' => $this->pemesananModel->countAllResults(),
+    ];
+
+    return view('pengrajin/home_pengrajin', $data);
   }
 
   public function produk()

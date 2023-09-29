@@ -6,23 +6,30 @@ use \CodeIgniter\Controller;
 use \App\Models\KriteriaModel;
 use \App\Models\SubkriteriaModel;
 use App\Controllers\BaseController;
-
+use Myth\Auth\Models\UserModel;
 
 class Admin extends BaseController
 {
   protected $KriteriaModel;
   protected $SubkriteriaModel;
+  protected $userModel;
+  
   public function __construct()
   {
     $this->KriteriaModel = new KriteriaModel();
     $this->SubkriteriaModel = new SubkriteriaModel();
+    $this->userModel = new UserModel();
   }
 
 
   // Dashboard
   public function index()
   {
-    return view('admin/home_admin');
+    $data = [
+      'akun_baru' => $this->userModel->countAllResults()
+    ];
+
+    return view('admin/home_admin', $data);
   }
 
 

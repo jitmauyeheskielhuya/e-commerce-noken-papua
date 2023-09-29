@@ -34,15 +34,15 @@
                 <label>Alamat<spn class="login-danger">*</span></label>
                 <input class="form-control <?php if (session('errors.alamat')) : ?>is-invalid<?php endif ?>" type="text" required name="alamat" value="<?= old('alamat') ?>">
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Hak Akses/Role<spn class="login-danger">*</span></label>
                 <select id="harga-noke" name="harga_noke" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
                   <!-- azsbcdhsa -->
-                  <option value=""><label for="">--pilih Hak Akses--</label></option>
-                  <option value="pengrajin">pengrajin</option>
-                  <option value="pelanggan">pelanggan</option>
-                </select>
-              </div>
+              <!-- <option value=""><label for="">--pilih Hak Akses--</label></option> -->
+              <!-- <option value="pengrajin">pengrajin</option> -->
+              <!-- <option value="pelanggan">pelanggan</option> -->
+              <!-- </select> -->
+              <!-- </div> -->
               <div class="form-group">
                 <label><?= lang('Auth.email') ?> <span class="login-danger">*</span></label>
                 <input class="form-control <?php if (session('errors.email')) : ?>is-invalid<?php endif ?>" type="email" name="email" value="<?= old('email') ?>">
