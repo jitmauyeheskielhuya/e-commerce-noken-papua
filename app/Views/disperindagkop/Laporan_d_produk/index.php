@@ -1,36 +1,41 @@
+<?php
+
+use App\Models\ProdukModel;
+?>
 <?= $this->extend('template/layout_home'); ?>
 
 <?= $this->Section('page-content'); ?>
 <div class="page-wrapper">
   <div class="content container-fluid">
-    <h4 class="text-emerald-400 pb-3">Laporan Data Produk</h4>
+    <h4 class="text-emerald-400 pb-3">Halaman Laporan Data Produk</h4>
     <div class="row pt-4 pb-4 rounded-md bg-slate-200">
       <div class="col">
-        <p class="text-lg font-bold">Tabel Laporan Data Produk</p>
-        <table class="w-full border border-slate-900 mt-4 text-center">
+        <p class="text-lg font-bold pt-3">Tabel Data Produk</p>
+
+
+        <table class="w-full border border-slate-900 text-center datatable table table-stripped ">
           <thead>
-            <tr class="bg-emerald-200">
-              <th class="py-2 px-4 border-b">Gambar</th>
-              <th class="py-2 px-4 border-b">Harag Noken</th>
-              <th class="py-2 px-4 border-b">Ukuran Noken</th>
-              <th class="py-2 px-4 border-b">Motif Noken</th>
-              <th class="py-2 px-4 border-b">Jenis Noken</th>
-              <th class="py-2 px-4 border-b">Nama Pengrajin</th>
-              <th class="py-2 px-4 border-b">Aksi</th>
+            <tr class="bg-emerald-200 text-center">
+              <th class="py-2 px-3 border-b">No</th>
+              <th class="py-2 px-3 border-b">Gambar</th>
+              <th class="py-2 px-3 border-b">Harga</th>
+              <th class="py-2 px-3 border-b">Ukuran</th>
+              <th class="py-2 px-3 border-b">Motif</th>
+              <th class="py-2 px-3 border-b">Jenis</th>
+              <th class="py-2 px-3 border-b">Nama Pengrajin</th>
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-emerald-100">
-              <td class="py-3 px-4 border-b">huya</td>
-              <td class="py-3 px-4 border-b">Produk A</td>
-              <td class="py-3 px-4 border-b">Rp 100.000</td>
-              <td class="py-3 px-4 border-b">Rp 100.000</td>
-              <td class="py-3 px-4 border-b">Rp 100.000</td>
-              <td class="py-3 px-4 border-b">Rp 100.000</td>
-              <td class="py-3 px-4 border-b">
-                <a href="" class="bg-emerald-600 hover:bg-emerald-500 rounded p-2 text-white"><i class="fa fa-eye"></i></a>
-              </td>
-            </tr>
+            <?php foreach ($produks as $key => $value) : ?>
+              <tr class="bg-emerald-100 text-center">
+                <td class="py-3 px-4 border-b"><?= $key + 1 ?></td>
+                <td class="py-3 px-4 border-b flex justify-center"><img width="50" src="/gambar_noken/<?= $value->gambar_noken ?>"></td>
+                <td class="py-3 px-4 border-b"><?= $value->harga_noken ?></td>
+                <td class="py-3 px-4 border-b"><?= $value->ukuran_noken ?></td>
+                <td class="py-3 px-4 border-b"><?= $value->motif_noken ?></td>
+                <td class="py-3 px-4 border-b"><?= $value->jenis_noken ?></td>
+                <td class="py-3 px-4 border-b"><?= $value->nama_depan ?></td>
+              <?php endforeach; ?>
           </tbody>
         </table>
       </div>

@@ -10,8 +10,18 @@ class ProdukModel extends Model
 {
   protected $table      = 'tbl_produk';
   protected $primaryKey = 'id_produk';
-  protected $allowedFields = ['nama_kriteria', 'bobot_kriteria'];
+  protected $retrnType  = 'object';
+  protected $allowedFields = ['nama_kriteria', 'bobot_kriteria', 'gambar_noken', 'ukuran_noken', 'motif_noken', 'jenis_noken', 'id_pengrajin', 'tgl_daftar'];
   protected $useTimestamps = true;
+
+  public function getAll()
+  {
+    $db      = \Config\Database::connect();
+    $builder = $db->table('tbl_produk');
+    $builder->join('users', 'users.id = tbl_produk.id_pengrajin');
+    $query = $builder->get();
+    return $query->getResult();
+  }
 
   public function get_produk()
   {
@@ -43,4 +53,7 @@ class ProdukModel extends Model
   {
     return $this->db->table('tbl_produk')->delete(array('id_produk' => $id_produk));
   }
+
+
+
 }
